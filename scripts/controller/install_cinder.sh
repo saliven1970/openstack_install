@@ -34,7 +34,7 @@ env_check()
 #{{{create_database
 create_database()
 {
-    MYSQL_COMMAND="mysql --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
+    MYSQL_COMMAND="mysql --host=$MYSQLDB_SERVER --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
     echo "### 1. Creating Cinder database"
     echo "CREATE DATABASE $CINDER_DBNAME;"|$MYSQL_COMMAND
     echo "GRANT ALL PRIVILEGES ON $CINDER_DBNAME.* TO '$CINDER_DBUSER'@'localhost' IDENTIFIED BY '$CINDER_DBPASS';"|$MYSQL_COMMAND

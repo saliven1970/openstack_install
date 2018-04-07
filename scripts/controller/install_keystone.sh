@@ -34,7 +34,7 @@ env_check()
 create_database()
 {
     echo "### 1. create database Keystone"
-    MYSQL_COMMAND="mysql --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
+    MYSQL_COMMAND="mysql --host=$MYSQLDB_SERVER --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
     echo $MYSQL_COMMAND
     echo "### 1. Creating Keystone database"
     echo "CREATE DATABASE $KEYSTONE_DBNAME;"|$MYSQL_COMMAND
@@ -78,9 +78,9 @@ configure_keystone()
 
     # (5)Bootstrap the Identity service:
     keystone-manage bootstrap --bootstrap-password $ADMIN_PASS \
-        --bootstrap-admin-url http://controller:35357/v3/ \
-        --bootstrap-internal-url http://controller:5000/v3/ \
-        --bootstrap-public-url http://controller:5000/v3/ \
+        --bootstrap-admin-url http://$CONTROLLER_NODES:35357/v3/ \
+        --bootstrap-internal-url http://$CONTROLLER_NODES:5000/v3/ \
+        --bootstrap-public-url http://$CONTROLLER_NODES:5000/v3/ \
         --bootstrap-region-id RegionOne
     echo "### Configure Keystone is Done"
 }
@@ -104,7 +104,7 @@ configure_http()
     export OS_PROJECT_NAME=admin
     export OS_USER_DOMAIN_NAME=Default
     export OS_PROJECT_DOMAIN_NAME=Default
-    export OS_AUTH_URL=http://controller:35357/v3
+    export OS_AUTH_URL=http://$CONTROLLER_NODES:35357/v3
     export OS_IDENTITY_API_VERSION=3
     echo "### Configure HTTPD is Done"
 }

@@ -3,7 +3,7 @@
 # Unattended installer for Openstack
 # 
 # Sample Config
-# version 1.0.1
+# version 1.1.2
 #
 
 #
@@ -44,8 +44,8 @@ DEMO_RC_FILE="demo-openrc"
 # MARIADB INFORMATION
 # 
 
+MYSQLDB_SERVER="10.1.0.85"
 MYSQLDB_ADMIN="root"
-MYSQLDB_PASSWORD="$DEFAULT_PASS"
 MYSQLDB_PASSWORD="$DEFAULT_PASS"
 MYSQLDB_PORT="3306"
 

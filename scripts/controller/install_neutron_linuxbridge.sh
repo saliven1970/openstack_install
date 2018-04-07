@@ -51,7 +51,7 @@ interface_check()
 #{{{create_database
 create_database()
 {
-    MYSQL_COMMAND="mysql --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN"
+    MYSQL_COMMAND="mysql --host=$MYSQLDB_SERVER --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN"
     echo "### 1. Creating neutron database"
     echo "CREATE DATABASE $NEUTRON_DBNAME;"|$MYSQL_COMMAND
     echo "GRANT ALL PRIVILEGES ON $NEUTRON_DBNAME.* TO '$NEUTRON_DBUSER'@'localhost' IDENTIFIED BY '$NEUTRON_DBPASS';"|$MYSQL_COMMAND

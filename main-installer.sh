@@ -349,6 +349,21 @@ install_compute()
             sleep 5
             sync
         fi
+	if [[ $INSTALL_CINDER == "yes" ]]
+        then
+            $TOP_DIR/scripts/controller/install_cinder.sh
+            if [[ -f /etc/openstack-control-script-config/cinder-installed ]]
+            then
+                echo ""
+                echo "### OPENSTACK CINDER INSTALLED"
+                echo ""
+            else
+                echo ""
+                echo "### ERROR: OPENSTACK CINDER INSTALLATION FAILED. ABORTING !!"
+                echo ""
+                exit 0
+            fi
+        fi
     fi
 }
 #}}}
@@ -454,7 +469,7 @@ main()
 USAGE="USAGE: $0 controller|compute  install|config|check" 
 if [ $# != 2  ] 
 then 
-    echo "version:1.0.2"
+    echo "version:1.1.2"
     echo "USAGE: $0 controller|compute  install|config|check" 
     exit 1; 
 fi 

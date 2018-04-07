@@ -12,7 +12,8 @@ ALLOWED_HOSTS = ['*', ]
 LOCAL_PATH = '/tmp'
 SECRET_KEY='e1855b2307124a3788ab'
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 
 CACHES = {
     'default': {

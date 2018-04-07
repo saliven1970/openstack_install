@@ -34,7 +34,7 @@ env_check()
 #{{{create_database
 create_database()
 {
-    MYSQL_COMMAND="mysql --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN"
+    MYSQL_COMMAND="mysql --host=$MYSQLDB_SERVER --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN"
     echo "### 1. Creating Glance database"
     echo "CREATE DATABASE $GLANCE_DBNAME;"|$MYSQL_COMMAND
     echo "GRANT ALL PRIVILEGES ON $GLANCE_DBNAME.* TO '$GLANCE_DBUSER'@'localhost' IDENTIFIED BY '$GLANCE_DBPASS';"|$MYSQL_COMMAND

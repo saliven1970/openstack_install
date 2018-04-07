@@ -33,7 +33,7 @@ env_check()
 #{{{create_database
 create_database()
 {
-    MYSQL_COMMAND="mysql --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
+    MYSQL_COMMAND="mysql --host=$MYSQLDB_SERVER --port=$MYSQLDB_PORT --password=$MYSQLDB_PASSWORD --user=$MYSQLDB_ADMIN "
     echo "### 1. Creating Nova database"
     echo "CREATE DATABASE $NOVA_DBNAME;"|$MYSQL_COMMAND
     echo "CREATE DATABASE $NOVAAPI_DBNAME;"|$MYSQL_COMMAND

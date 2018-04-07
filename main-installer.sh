@@ -141,7 +141,7 @@ install_controller()
                 #
                 # Install Neutron service with OpenVSwitch
                 #
-                $TOP_DIR/scripts/controller/install_neutron_openvswitch.sh
+                $TOP_DIR/scripts/controller/install_neutron_openvswitch.sh ${DEPLOY_OP}
 
                 if [[ -f /etc/openstack-control-script-config/neutron-openvswitch-installed ]]
                 then
@@ -212,7 +212,7 @@ install_controller()
         
         if [[ $INSTALL_CINDER == "yes" ]]
         then
-            $TOP_DIR/scripts/controller/install_cinder.sh
+            $TOP_DIR/scripts/controller/install_cinder.sh ${DEPLOY_OP}
             if [[ -f /etc/openstack-control-script-config/cinder-installed ]]
             then
                 echo ""
@@ -349,17 +349,17 @@ install_compute()
             sleep 5
             sync
         fi
-	if [[ $INSTALL_CINDER == "yes" ]]
+	if [[ $INSTALL_STORAGE == "yes" ]]
         then
-            $TOP_DIR/scripts/controller/install_cinder.sh
-            if [[ -f /etc/openstack-control-script-config/cinder-installed ]]
+            $TOP_DIR/scripts/controller/install_storage.sh ${DEPLOY_OP}
+            if [[ -f /etc/openstack-control-script-config/storage-installed ]]
             then
                 echo ""
-                echo "### OPENSTACK CINDER INSTALLED"
+                echo "### OPENSTACK STORAGE INSTALLED"
                 echo ""
             else
                 echo ""
-                echo "### ERROR: OPENSTACK CINDER INSTALLATION FAILED. ABORTING !!"
+                echo "### ERROR: OPENSTACK STORAGE INSTALLATION FAILED. ABORTING !!"
                 echo ""
                 exit 0
             fi
